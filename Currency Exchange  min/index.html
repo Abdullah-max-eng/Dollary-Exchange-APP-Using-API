@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="currency.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Currency</title>
+  </head>
+
+  <body>
+    <h1>Currency Conversion using Online API</h1>
+
+    <div id="form">
+      <form>
+        <div style="display: flex; flex-direction: column">
+          <div>
+            <label for="myselect1">From:</label>
+            <select id="myselect1"></select>
+          </div>
+          <div>
+            <label for="number1">Amount:</label>
+            <input
+              type="number"
+              name="number1"
+              id="number1"
+              placeholder="Amount"
+              title="Enter the Amount here"
+            />
+          </div>
+          <div>
+            <label for="myselect2">To:</label>
+            <select id="myselect2"></select>
+          </div>
+          <input type="submit" value="Check Currency" id="submitButton" />
+        </div>
+        <h2 id="result"></h2>
+        <h2 id="result2"></h2>
+      </form>
+    </div>
+  </body>
+</html>

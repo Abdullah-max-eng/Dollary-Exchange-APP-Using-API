@@ -30,8 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(error)
         });
 
-
-
+        
         document.querySelector("#submitButton").addEventListener('mouseover',  () => {
             document.querySelector('html').style.backgroundColor = "#37c51b"
     
@@ -41,11 +40,32 @@ document.addEventListener("DOMContentLoaded", () => {
     
         })
 
-     
+
+
+
+        document.querySelector("#number1").addEventListener("input", () => {
+        let number1 = document.querySelector("#number1").value;
+        let firstC = myselect1.value;
+        let secondC = myselect2.value;
+        fetch("https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/" + firstC)
+        .then( response => {
+            return response.json();
+        })
+        .then( data => {
+            const rate = data.conversion_rates[secondC];
+            total = calculateTotal(number1 , rate);
+            display(number1, rate, firstC, secondC , total)
+        })
+        .catch( error => {
+            console.log(error)
+        });
+    });
 
 
 
 //------------------ On Submit --------------------------
+
+
 
     document.querySelector("form").onsubmit = () => { 
        let number1 = document.querySelector("#number1").value;
@@ -76,9 +96,20 @@ function calculateTotal(number1, rate){
 
 function display(number1, rate, firstC, secondC, total){
     document.querySelector("#result").innerHTML = ` ${number1} <span class="Cs"> ${firstC} </span> is =  <span id = "total"> </span>      <span class="Cs"> ${secondC} </span> `
-    document.querySelector("#result2").innerHTML = ` 1 <span class="Cs"> ${firstC} </span> is = <span id="rate"> ${rate} </span> <span class="Cs"> ${secondC} </span>  `
+    document.querySelector("#result2").innerHTML = ` 1 <span class="Cs"> ${firstC} </span> = <span id="rate"> ${rate} </span> <span class="Cs"> ${secondC} </span>  `
     document.querySelector("#rate").innerHTML  = rate; // only showing 1 in both currencies
     document.querySelector("#total").innerHTML  = total; // Total will be entered here
  
 
 }
+
+
+
+
+
+
+
+
+
+
+// Rest of the code remains the same
